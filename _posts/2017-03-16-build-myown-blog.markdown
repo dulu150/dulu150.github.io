@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "让我们开火"
 date:   2017-03-16 22:26:01 +0800
 categories: jekyll update
 ---
