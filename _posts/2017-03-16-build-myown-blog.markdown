@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "使用 github + jekyll 搭建个人博客"
-date:   2017-03-17 21:115:45 +0800
-categories: share
+title:  "Welcome to Jekyll!"
+date:   2017-03-16 22:26:01 +0800
+categories: jekyll update
 ---
+
 ###我要开始疯狂了，哈哈哈哈
