@@ -16,5 +16,3 @@ categories: jekyll update
 #原则5：最小知识原则
 
 #原则6：开放封闭原则
-
-http://hwci.huawei.com/ImproveVote/IVSuggestionInfo.aspx?No=20170323-0958-4698-aeaf-b01e06558db1
