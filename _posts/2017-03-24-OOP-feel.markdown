@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "设计模式的六大原则"
-date:   2017-03-23 22:26:01 +0800
+title:  "面向对象编程感悟"
+date:   2017-03-24 22:26:01 +0800
 categories: jekyll update
 ---
 
