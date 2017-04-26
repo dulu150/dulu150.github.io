@@ -5,7 +5,7 @@ date:   2017-04-26 11:34:01 +0800
 categories: jekyll update
 ---
 
-# 为什么要用策略模式
+### 为什么要用策略模式
 ## 前奏
 面向对象的设计原则也是为了最大程度上做到代码复用、解耦。
 如果以实际的指标衡量，那么如果改动代码的时候，能够做到
@@ -18,4 +18,20 @@ categories: jekyll update
 策略模式和工厂方法很像，它们两个其实体现的都是面向对象的
 基本原理：多态。继承我就不说了，这个已经被用滥了。
 
-闲话少许上代码：
+闲话少许上代码：现在我们有一个需求，实现计算器计算输入a,b的 “+,-,*,/”的结果。
+过程式语言怎么写呢：
+calculator.c
+    int Calculate(int a, int b, char oper)
+    {
+        switch (oper)
+        {
+            case "+":
+                return a + b;
+            case "-":
+                return a - b;
+            case "*":
+                return a * b;
+            calse "/"
+                return a / b;
+        }
+    }
