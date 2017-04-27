@@ -23,15 +23,15 @@ categories: jekyll update
 calculator.c  
 	int Calculate(int a, int b, char oper)
 	{
-        switch (oper)
-        {
-            case "+":
-                return a + b;
-            case "-":
-                return a - b;
-            case "*":
-                return a * b;
-            calse "/"
-                return a / b;
-        }
-    }
+		switch (oper)
+		{
+			case "+":
+				return a + b;
+			case "-":
+				return a - b;
+			case "*":
+				return a * b;
+			calse "/"
+				return a / b;
+		}
+	}
