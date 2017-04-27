@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 # 为什么要用策略模
-=====
+
 ## 前奏
 面向对象的设计原则也是为了最大程度上做到代码复用、解耦。
 如果以实际的指标衡量，那么如果改动代码的时候，能够做到
@@ -23,19 +23,22 @@ categories: jekyll update
 过程式语言怎么写呢：  
 calculator.c  
 ```c
-	int Calculate(int a, int b, char oper)
+int Calculate(int a, int b, char oper)
+{
+	switch (oper)
 	{
-		switch (oper)
-		{
-			case "+":
-				return a + b;
-			case "-":
-				return a - b;
-			case "*":
-				return a * b;
-			calse "/"
-				return a / b;
-		}
+		case "+":
+			return a + b;
+		case "-":
+			return a - b;
+		case "*":
+			return a * b;
+		calse "/"
+			return a / b;
 	}
+}
 ```
-##### 注：markdown语法参考http://www.tuicool.com/articles/zIJrEjn
+		这样做的缺点就是，如果将来我们要实现别的操作。比如平方，那么我们就必须去修改.c文件，
+		这个.c文件必须重新编译。当然你可以说我的代码多分几个.c就行了。但是这样有一个问题就是
+		代码分散的太厉害，反而不利于阅读。读代码的过程中，大家都希望强相关的功能都放到一个.c中
+##### 注：markdown语法参考 http://www.tuicool.com/articles/zIJrEjn
