@@ -1,0 +1,118 @@
+---
+layout: post
+title:  "策略模式详解"
+date:   2017-04-26 11:34:01 +0800
+categories: jekyll update
+---
+
+# 为什么要用策略模
+
+## 前奏
+面向对象的设计原则也是为了最大程度上做到代码复用、解耦。
+如果以实际的指标衡量，那么如果改动代码的时候，能够做到
+改动的代码行数最少，代码接口最清晰，新人最容易理解。
+那这份代码就是一份好代码。
+不是所有应用了设计模式的代码都是好代码，代码设计的过程
+中还有过度设计一词。
+
+## 策略模式
+策略模式和工厂方法很像，它们两个其实体现的都是面向对象的  
+基本原理：多态。继承我就不说了，这个已经被用滥了。  
+
+##### 闲话少许上代码：现在我们有一个需求，实现计算器计算输入a,b的 “+,-,*,/”的结果。  
+`过程式语言怎么写呢： ` 
+calculator.c  
+```c
+int Calculate(int a, int b, char oper)
+{
+    switch (oper)
+	{
+		case "+":
+			return a + b;
+		case "-":
+			return a - b;
+		case "*":
+			return a * b;
+		calse "/"
+			return a / b;
+	}
+}
+```
+这样做的缺点就是，如果将来我们要实现别的操作。比如平方，那么我们就必须去修改.c文件，
+这个.c文件必须重新编译。当然你可以说我的代码多分几个.c就行了。但是这样有一个问题就是
+代码分散的太厉害，反而不利于阅读。读代码的过程中，大家都希望强相关的功能都放到一个.c中
+		
+`我们再看OOP是如何解决这个问题的：`  
+calculate.java  
+```java
+
+package webblog;
+
+class CalculaterFactory
+{
+	public Calculate CreateCalculater(char oper)
+	{
+		switch (oper)
+		{
+			case '+':
+				return new PlusCalculate();
+			case '-':
+				return new SubCalculate();
+			case '*':
+				return new MutiCalculate();
+			case '/':
+				return new DivCalculate();
+			default:
+				return null;
+		}
+	}
+}
+
+public abstract class Calculate {
+	public abstract int GetResult(int a, int b);
+}
+
+class PlusCalculate extends Calculate
+{
+
+	@Override
+	public int GetResult(int a, int b) {
+		return a + b;
+	}
+}
+
+class SubCalculate extends Calculate{
+
+	@Override
+	public int GetResult(int a, int b) {
+		return a - b;
+	}
+	
+}
+
+class MutiCalculate extends Calculate{
+
+	@Override
+	public int GetResult(int a, int b) {
+		return a * b;
+	}
+}
+
+class DivCalculate extends Calculate{
+
+	@Override
+	public int GetResult(int a, int b) {
+		return  a / b;
+	}
+}  
+```
+此处大家可能要吐槽了。我靠，JAVA写的代码比C语言复杂百倍。事实确实如此。JAVA这种语言的好处在于它的工程的合理性，但是不体现在具体的函数上。以至与  在某些地方如果你用C语言写反而比JAVA语言更加简洁。JAVA的优越性还是需要大的才能体现出来。
+
+闲话少许，`OOP的好处是`我们尽可能通过继承实现了代码复用，如果  CALCULATE类里面还有一些图形化操作，那么子类是完全继承的。而不需要再次重写写 
+代码才能够支持这些操作。还有另一方面的好处，我们实现了各个子类之间的隔离。  
+
+你的修改不会影响我，减少了大家犯错误的机会。但是这样做还是不够好，因为我们发现。如果将来我要扩展其他操作，我竟然要重新继承
+一个类，这样做是不是太重量化了。而且如果有别人的代码我要好好的复用一番，我竟然也得重新开始继承一把。这样太麻烦了。那么我们要做的是什么呢。面向对象的基本原则给了这个问题答案。那就是`抽象和实现的分离`。`我们要通过某种方法让经常变化的东西  
+能够抽象出来，`具体的实现由菜鸟搞定就行了（哈哈哈，自己骂自己)。
+
+##### 注：markdown语法参考 http://www.tuicool.com/articles/zIJrEjn
